@@ -43,5 +43,10 @@
     }
 }
 .mostrar{
-    display: block;
+    display: flex;
+    flex-direction: column;
+
+    @include tablet{
+        flex-direction: row;
+    }
 }
