@@ -29,8 +29,9 @@
 
         &::after {
             content: "";
-            display: 15rem;
-            width: 0.5rem;
+            display: block;
+            width:15rem;
+            height: 0.5rem;
             background-color: $verde;
             margin-top: 1rem;
         }
