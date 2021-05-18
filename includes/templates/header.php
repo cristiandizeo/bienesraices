@@ -10,11 +10,11 @@
 </head>
 
 <body>
-    <header class="header">
+    <header class="header <?php echo isset($inicio) ? 'inicio' : ''; ?>">
         <div class="contenedor contenido-header">
             <div class="barra">
 
-                <a href="/bienesraices"><img src="build/img/logo.svg" alt="Bienes raices"></a>
+                <a href="/"><img src="build/img/logo.svg" alt="Bienes raices"></a>
                 <div class="mobile-menu">
                     <img src="build/img/barras.svg" alt="icono menu responsive">
                 </div>
