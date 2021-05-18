@@ -20,10 +20,10 @@
                 <div class="derecha">
                     <img src="build/img/dark-mode.svg" alt="Dark mode" class="dark-mode-boton">
                 <nav class="navegacion">
-                    <a href="nosotros.html">Nosotros</a>
-                    <a href="anuncios.html">Anuncios</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="contacto.html">Contacto</a>
+                    <a href="nosotros.php">Nosotros</a>
+                    <a href="anuncios.php">Anuncios</a>
+                    <a href="blog.php">Blog</a>
+                    <a href="contacto.php">Contacto</a>
                 </nav>
             </div>
             </div>
@@ -85,7 +85,7 @@
                             <p>3</p>
                         </li>
                     </ul>
-                    <a href="anuncio.html" class="boton-verde">
+                    <a href="anuncio.php" class="boton-verde">
                         Ver propiedad
                     </a>
                 </div>
@@ -116,7 +116,7 @@
                             <p>3</p>
                         </li>
                     </ul>
-                    <a href="anuncio.html" class="boton-verde">
+                    <a href="anuncio.php" class="boton-verde">
                         Ver propiedad
                     </a>
                 </div>
@@ -147,7 +147,7 @@
                             <p>3</p>
                         </li>
                     </ul>
-                    <a href="anuncio.html" class="boton-verde">
+                    <a href="anuncio.php" class="boton-verde">
                         Ver propiedad
                     </a>
                 </div>
@@ -155,13 +155,13 @@
         </div>
 
         <div class="alinear-derecha">
-            <a href="anuncios.html" class="boton-verde">Ver todas</a>
+            <a href="anuncios.php" class="boton-verde">Ver todas</a>
         </div>
     </section>
     <section class="imagen-contacto">
         <h2>Encuentra la casa de tus sueños</h2>
         <p>Completa el formulario y envíanos un mensaje</p>
-        <a href="contacto.html" class="boton-amarillo">Contáctanos</a>
+        <a href="contacto.php" class="boton-amarillo">Contáctanos</a>
     </section>
 
     <div class="contenedor seccion seccion-inferior">
@@ -177,7 +177,7 @@
                     </picture>
                 </div>
                 <div class="texto-entrada">
-                    <a href="entrada.html">
+                    <a href="entrada.php">
                         <h4>Terraza en el techo de tu casa</h4>
                         <p class="informacion-meta">Escrito el <span>20/10/2021</span> por <span>Juan</span></p>
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla impedit molestiae amet in
@@ -196,7 +196,7 @@
                     </picture>
                 </div>
                 <div class="texto-entrada">
-                    <a href="entrada.html">
+                    <a href="entrada.php">
                         <h4>Decoracion de interiores</h4>
                         <p class="informacion-meta">Escrito el <span>20/10/2021</span> por <span>Juan</span></p>
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla impedit molestiae amet in
@@ -223,10 +223,10 @@
 
     <footer class="footer seccion">
         <div class="contenedor contenedor-footer">
-            <a href="nosotros.html">Nosotros</a>
-            <a href="anuncios.html">Anuncios</a>
-            <a href="blog.html">Blog</a>
-            <a href="contacto.html">Contacto</a>
+            <a href="nosotros.php">Nosotros</a>
+            <a href="anuncios.php">Anuncios</a>
+            <a href="blog.php">Blog</a>
+            <a href="contacto.php">Contacto</a>
         </div>
         <p class="copyright">Todos los derechos reservados 2021 &copy;</p>
     </footer>

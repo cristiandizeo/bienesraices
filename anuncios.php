@@ -12,17 +12,17 @@
        <div class="contenedor contenido-header">
 <div class="barra">
 
-    <a href="/"><img src="build/img/logo.svg" alt="Bienes raices"></a>
+    <a href="/index.php"><img src="build/img/logo.svg" alt="Bienes raices"></a>
     <div class="mobile-menu">
         <img src="build/img/barras.svg" alt="icono menu responsive">
     </div>
     <div class="derecha">
         <img src="build/img/dark-mode.svg" alt="Dark mode" class="dark-mode-boton">
     <nav class="navegacion">
-        <a href="nosotros.html">Nosotros</a>
-        <a href="anuncios.html">Anuncios</a>
-        <a href="blog.html">Blog</a>
-        <a href="contacto.html">Contacto</a>
+        <a href="nosotros.php">Nosotros</a>
+        <a href="anuncios.php">Anuncios</a>
+        <a href="blog.php">Blog</a>
+        <a href="contacto.php">Contacto</a>
     </nav>
 </div>
  
@@ -58,7 +58,7 @@
                         <p>3</p>
                     </li>
                 </ul>
-                <a href="anuncio.html" class="boton-verde">
+                <a href="anuncio.php" class="boton-verde">
                     Ver propiedad
                 </a>
             </div>
@@ -89,7 +89,7 @@
                         <p>3</p>
                     </li>
                 </ul>
-                <a href="anuncio.html" class="boton-verde">
+                <a href="anuncio.php" class="boton-verde">
                     Ver propiedad
                 </a>
             </div>
@@ -120,7 +120,7 @@
                         <p>3</p>
                     </li>
                 </ul>
-                <a href="anuncio.html" class="boton-verde">
+                <a href="anuncio.php" class="boton-verde">
                     Ver propiedad
                 </a>
             </div>
@@ -151,7 +151,7 @@
                         <p>3</p>
                     </li>
                 </ul>
-                <a href="anuncio.html" class="boton-verde">
+                <a href="anuncio.php" class="boton-verde">
                     Ver propiedad
                 </a>
             </div>
@@ -182,7 +182,7 @@
                         <p>3</p>
                     </li>
                 </ul>
-                <a href="anuncio.html" class="boton-verde">
+                <a href="anuncio.php" class="boton-verde">
                     Ver propiedad
                 </a>
             </div>
@@ -213,7 +213,7 @@
                         <p>3</p>
                     </li>
                 </ul>
-                <a href="anuncio.html" class="boton-verde">
+                <a href="anuncio.php" class="boton-verde">
                     Ver propiedad
                 </a>
             </div>
@@ -222,10 +222,10 @@
    </main>
     <footer class="footer seccion">
         <div class="contenedor contenedor-footer">
-            <a href="nosotros.html">Nosotros</a>
-            <a href="anuncios.html">Anuncios</a>
-            <a href="blog.html">Blog</a>
-            <a href="contacto.html">Contacto</a>
+            <a href="nosotros.php">Nosotros</a>
+            <a href="anuncios.php">Anuncios</a>
+            <a href="blog.php">Blog</a>
+            <a href="contacto.php">Contacto</a>
         </div>
         <p class="copyright">Todos los derechos reservados 2021 &copy;</p>
     </footer>
