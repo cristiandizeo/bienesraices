@@ -1,5 +1,8 @@
-<?php include 'includes/templates/header.php'; ?>
-   <main class="contenedor seccion">
+<?php
+require 'includes/funciones.php';
+incluirTemplate('header'); ?>
+
+<main class="contenedor seccion">
        <h1>Anuncios</h1>
 
        <div class="contenedor-anuncios">
@@ -191,4 +194,4 @@
         </div>
     </div>
    </main>
-   <?php include 'includes/templates/footer.php'; ?>
+   <?php incluirTemplate('footer'); ?>
