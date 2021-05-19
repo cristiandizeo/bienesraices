@@ -1,0 +1,1 @@
+{"version":3,"sources":["internas/admin.scss"],"names":[],"mappings":"AAAA,QACI,aAAc,CADlB,cAGQ,SAAU","file":"admin.css","sourcesContent":[".alerta{\r\n    padding: .5rem;\r\n    &.error{\r\n        color: red;\r\n    }\r\n}"]}
