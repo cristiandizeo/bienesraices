@@ -67,7 +67,7 @@ if(!$imagen['name'] || $imagen['error']){
 }
 
 // Validar por tamaño (100kb)
-$medida = 1000*100;
+$medida = 300000;
 if($imagen['size'] > $medida){
     $errores[] = '* La imagen no puede superar los 100kb';
 }
@@ -79,6 +79,18 @@ if($imagen['size'] > $medida){
 
 //revisar arr err
 if(empty($errores)){
+
+    // SUBIDA DE ARCHIVOS
+    // crear carpeta
+    $carpetaImagenes ='../../imagenes';
+
+    if(!is_dir($carpetaImagenes)){
+    mkdir($carpetaImagenes);
+}
+
+//subir imagen
+move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . "/archivo.jpg");
+exit;
 
 //insertar bdd
 $query = "INSERT INTO propiedades (titulo, precio, descripcion, habitaciones, wc, estacionamiento, creado, idvendedor) VALUES ('$titulo', '$precio', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedorId')";
@@ -130,9 +142,9 @@ incluirTemplate('header');
             <label for="habitaciones">Habitaciones</label>
             <input type="number" id="habitaciones" value="<?php echo $habitaciones ?>" name="habitaciones" placeholder="Ej: 3" min="1" max="9">
             <label for="wc">Baños</label>
-            <input type="number" id="wc" name="wc" placeholder="Ej: 3" min="1" max="9">
+            <input type="number" id="wc" value="<?php echo $wc ?>"  name="wc" placeholder="Ej: 3" min="1" max="9">
             <label for="estacionamiento">Estacionamiento</label>
-            <input type="number" id="estacionamiento" name="estacionamiento" placeholder="Ej: 3" min="1" max="9">
+            <input type="number" id="estacionamiento" value="<?php echo $estacionamiento ?>"  name="estacionamiento" placeholder="Ej: 3" min="1" max="9">
         </fieldset>
         <fieldset>
             <legend>Vendedor</legend>
