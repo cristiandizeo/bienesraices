@@ -21,9 +21,13 @@ $vendedorId = '';
 $creado = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-// echo "<pre>";
-// var_dump($_POST);
-// echo "</pre>";
+echo "<pre>";
+var_dump($_POST);
+echo "</pre>";
+
+echo "<pre>";
+var_dump($_FILES);
+echo "</pre>";
 
 $titulo = mysqli_real_escape_string($db, $_POST['titulo']);
 $precio = mysqli_real_escape_string($db, $_POST['precio']);
@@ -33,6 +37,9 @@ $wc = mysqli_real_escape_string($db, $_POST['wc']);
 $estacionamiento = mysqli_real_escape_string($db, $_POST['estacionamiento']);
 $vendedorId = mysqli_real_escape_string($db, $_POST['idvendedor']);
 $creado = date('Y/m/d');
+
+// Asignar files hacia una variable
+$imagen = $_FILES['imagen'];
 
 if (!$titulo) {
     $errores[] = "* Añade un título";
@@ -55,6 +62,16 @@ if (!$estacionamiento) {
 if (!$vendedorId) {
     $errores[] = "* Debes indicar el vendedor";
 }
+if(!$imagen['name'] || $imagen['error']){
+    $errores[] = "* Debes subir una imagen";
+}
+
+// Validar por tamaño (100kb)
+$medida = 1000*100;
+if($imagen['size'] > $medida){
+    $errores[] = '* La imagen no puede superar los 100kb';
+}
+
 
 // echo "<pre>";
 // var_dump($errores);
@@ -93,7 +110,7 @@ incluirTemplate('header');
         <?php echo $error; ?>
         </div>
     <?php endforeach;?>
-    <form class="formulario" method="POST" action="/admin/propiedades/crear.php">
+    <form class="formulario" method="POST" action="/admin/propiedades/crear.php" enctype="multipart/form-data">
         <fieldset>
             <legend>Información general</legend>
             <label for="titulo">Título</label>
@@ -103,7 +120,7 @@ incluirTemplate('header');
             <input type="number" id="precio" value="<?php echo $precio ?>" name="precio" placeholder="Precio de la propiedad">
 
             <label for="imagen">Imagen</label>
-            <input type="file" id="imagen" value="<?php echo $imagen ?>" name="imagen" accept="image/jpeg, image/png">
+            <input type="file" id="imagen" name="imagen" accept="image/jpeg, image/png">
 
             <label for="descripcion">Descripción</label>
             <textarea type="text" id="descripcion" name="descripcion" placeholder="Descripción de la propiedad"><?php echo $descripcion ?></textarea>
@@ -120,7 +137,7 @@ incluirTemplate('header');
         <fieldset>
             <legend>Vendedor</legend>
             <select name="idvendedor">
-                <option value="" disabled selected><-Seleccione vendedor-></option>
+                <option value=" " disabled selected><-Seleccione vendedor-></option>
 <?php while($vendedor = mysqli_fetch_assoc($resultado)) : ?>
     <option <?php echo $vendedorId === $vendedor['idvendedor'] ? 'selected': ''; ?> value="<?php echo $vendedor['idvendedor']; ?>"><?php echo $vendedor['apellido'] . ", " . $vendedor['nombre']?></option>
 <?php endwhile;?>
