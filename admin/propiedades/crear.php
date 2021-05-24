@@ -82,18 +82,19 @@ if(empty($errores)){
 
     // SUBIDA DE ARCHIVOS
     // crear carpeta
-    $carpetaImagenes ='../../imagenes';
+    $carpetaImagenes ='../../imagenes/';
 
     if(!is_dir($carpetaImagenes)){
     mkdir($carpetaImagenes);
 }
+// generar nombre unico
+$nombreImagen = md5(uniqid(rand(), true))  . ".jpg";
 
 //subir imagen
-move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . "/archivo.jpg");
-exit;
+move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
 
 //insertar bdd
-$query = "INSERT INTO propiedades (titulo, precio, descripcion, habitaciones, wc, estacionamiento, creado, idvendedor) VALUES ('$titulo', '$precio', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedorId')";
+$query = "INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, idvendedor) VALUES ('$titulo', '$precio', '$nombreImagen', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedorId')";
 $resultado = mysqli_query($db, $query);
 
 if($resultado){
