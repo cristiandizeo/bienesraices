@@ -98,7 +98,7 @@ $query = "INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaci
 $resultado = mysqli_query($db, $query);
 
 if($resultado){
-    header('Location: /admin');
+    header('Location: /admin?resultado=1');
 }
 // if($resultado){
 //     echo "Insertado correctamente";
