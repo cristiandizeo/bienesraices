@@ -11,6 +11,10 @@ if(!$id){
 require '../../includes/config/database.php';
 $db = conectarDB();
 
+//obtener datos de propiedad
+$consulta = "SELECT * FROM propiedades WHERE idpropiedad = ${id}";
+$resultado = mysqli_query($db, $consulta);
+$propiedad = mysqli_fetch_assoc($resultado);
 
 //obtener selects
 $consulta = "SELECT * FROM vendedores";
@@ -19,14 +23,15 @@ $resultado = mysqli_query($db, $consulta);
 //arr msj error
 $errores = [];
 
-$titulo = '';
-$precio = '';
-$descripcion = '';
-$habitaciones = '';
-$wc = '';
-$estacionamiento = '';
-$vendedorId = '';
-$creado = '';
+$titulo = $propiedad['titulo'];
+$precio = $propiedad['precio'];
+$descripcion = $propiedad['descripcion'];
+$habitaciones = $propiedad['habitaciones'];
+$wc = $propiedad['wc'];
+$estacionamiento = $propiedad['estacionamiento'];
+$idvendedor = $propiedad['idvendedor'];
+$creado = $propiedad['creado'];
+$imagenPropiedad = $propiedad['imagen'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 echo "<pre>";
@@ -43,7 +48,7 @@ $descripcion = mysqli_real_escape_string($db, $_POST['descripcion']);
 $habitaciones = mysqli_real_escape_string($db, $_POST['habitaciones']);
 $wc = mysqli_real_escape_string($db, $_POST['wc']);
 $estacionamiento = mysqli_real_escape_string($db, $_POST['estacionamiento']);
-$vendedorId = mysqli_real_escape_string($db, $_POST['idvendedor']);
+$idvendedor = mysqli_real_escape_string($db, $_POST['idvendedor']);
 $creado = date('Y/m/d');
 
 // Asignar files hacia una variable
@@ -67,7 +72,7 @@ if (!$wc) {
 if (!$estacionamiento) {
     $errores[] = "* Añade el numero de estacionamientos";
 }
-if (!$vendedorId) {
+if (!$idvendedor) {
     $errores[] = "* Debes indicar el vendedor";
 }
 if(!$imagen['name'] || $imagen['error']){
@@ -102,7 +107,7 @@ $nombreImagen = md5(uniqid(rand(), true))  . ".jpg";
 move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
 
 //insertar bdd
-$query = "INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, idvendedor) VALUES ('$titulo', '$precio', '$nombreImagen', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedorId')";
+$query = "INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, idvendedor) VALUES ('$titulo', '$precio', '$nombreImagen', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$idvendedor')";
 $resultado = mysqli_query($db, $query);
 
 if($resultado){
@@ -143,6 +148,8 @@ incluirTemplate('header');
             <label for="imagen">Imagen</label>
             <input type="file" id="imagen" name="imagen" accept="image/jpeg, image/png">
 
+            <img src="/imagenes/<?php echo $imagenPropiedad;?>" class="img-small" alt="">
+
             <label for="descripcion">Descripción</label>
             <textarea type="text" id="descripcion" name="descripcion" placeholder="Descripción de la propiedad"><?php echo $descripcion ?></textarea>
         </fieldset>
@@ -160,7 +167,7 @@ incluirTemplate('header');
             <select name="idvendedor">
                 <option value=" " disabled selected><-Seleccione vendedor-></option>
 <?php while($vendedor = mysqli_fetch_assoc($resultado)) : ?>
-    <option <?php echo $vendedorId === $vendedor['idvendedor'] ? 'selected': ''; ?> value="<?php echo $vendedor['idvendedor']; ?>"><?php echo $vendedor['apellido'] . ", " . $vendedor['nombre']?></option>
+    <option <?php echo $idvendedor === $vendedor['idvendedor'] ? 'selected': ''; ?> value="<?php echo $vendedor['idvendedor']; ?>"><?php echo $vendedor['apellido'] . ", " . $vendedor['nombre']?></option>
 <?php endwhile;?>
             </select>
         </fieldset>

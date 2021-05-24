@@ -1,12 +1,12 @@
 .alerta {
     padding: 0.5rem;
     &.error {
-        color: red;
+        color: $rojo;
     }
 
     &.exito {
         text-align: center;
-        color: white;
+        color: $blanco;
         background-color: $verde;
     }
 }
@@ -19,11 +19,14 @@ table.propiedades {
     thead {
         background-color: $verde;
         th {
-            color: white;
+            color: $blanco;
             padding: 2rem;
         }
     }
     .imagen-tabla {
         width: 10rem;
     }
+}
+.img-small{
+    width: 20rem;
 }
