@@ -1,12 +1,29 @@
-.alerta{
-    padding: .5rem;
-    &.error{
+.alerta {
+    padding: 0.5rem;
+    &.error {
         color: red;
     }
 
-    &.exito{
+    &.exito {
         text-align: center;
         color: white;
         background-color: $verde;
+    }
+}
+
+table.propiedades {
+    margin-top: 4rem;
+    width: 100%;
+    border-spacing: 0;
+
+    thead {
+        background-color: $verde;
+        th {
+            color: white;
+            padding: 2rem;
+        }
+    }
+    .imagen-tabla {
+        width: 10rem;
     }
 }
