@@ -23,10 +23,10 @@ incluirTemplate('header'); ?>
    if (intval($resultado) === 1) :
    ?>
       <p class="alerta exito">Anuncio creado correctamente</p>
-      <?php
-   elseif(intval($resultado) === 2) :
+   <?php
+   elseif (intval($resultado) === 2) :
    ?>
-   <p class="alerta exito">Anuncio actualizado correctamente</p>
+      <p class="alerta exito">Anuncio actualizado correctamente</p>
    <?php
    endif;
    ?>
@@ -42,21 +42,22 @@ incluirTemplate('header'); ?>
             <th>Acciones</th>
          </tr>
       </thead>
-      <tbody><!-- mostrar resultados -->
-      <?php 
-         while($propiedad = mysqli_fetch_assoc($resultadoConsulta)):
-      ?>
-         <tr>
-            <td><?php echo $propiedad['idpropiedad']; ?></td>
-            <td><?php echo $propiedad['titulo']; ?></td>
-            <td><img src="/imagenes/<?php echo $propiedad['imagen']; ?>" class="imagen-tabla" alt=""></td>
-            <td>$ <?php echo $propiedad['precio']; ?></td>
-            <td>
-               <a href="propiedades/actualizar.php?idpropiedad=<?php echo $propiedad['idpropiedad'];?>" class="boton-amarillo-block">Editar</a>
-               <a href="#" class="boton-rojo-block">Eliminar</a>
-            </td>
-         </tr>
-         <?php endwhile;?>
+      <tbody>
+         <!-- mostrar resultados -->
+         <?php
+         while ($propiedad = mysqli_fetch_assoc($resultadoConsulta)) :
+         ?>
+            <tr>
+               <td><?php echo $propiedad['idpropiedad']; ?></td>
+               <td><?php echo $propiedad['titulo']; ?></td>
+               <td><img src="/imagenes/<?php echo $propiedad['imagen']; ?>" class="imagen-tabla" alt=""></td>
+               <td>$ <?php echo $propiedad['precio']; ?></td>
+               <td>
+                  <a href="propiedades/actualizar.php?idpropiedad=<?php echo $propiedad['idpropiedad']; ?>" class="boton-amarillo-block">Editar</a>
+                  <a href="#" class="boton-rojo-block">Eliminar</a>
+               </td>
+            </tr>
+         <?php endwhile; ?>
       </tbody>
    </table>
 
