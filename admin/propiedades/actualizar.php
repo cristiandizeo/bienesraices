@@ -75,9 +75,6 @@ if (!$estacionamiento) {
 if (!$idvendedor) {
     $errores[] = "* Debes indicar el vendedor";
 }
-if(!$imagen['name'] || $imagen['error']){
-    $errores[] = "* Debes subir una imagen";
-}
 
 // Validar por tamaño (100kb)
 $medida = 300000;
@@ -94,24 +91,24 @@ if($imagen['size'] > $medida){
 if(empty($errores)){
 
     // SUBIDA DE ARCHIVOS
-    // crear carpeta
-    $carpetaImagenes ='../../imagenes/';
+//     // crear carpeta
+//     $carpetaImagenes ='../../imagenes/';
 
-    if(!is_dir($carpetaImagenes)){
-    mkdir($carpetaImagenes);
-}
-// generar nombre unico
-$nombreImagen = md5(uniqid(rand(), true))  . ".jpg";
+//     if(!is_dir($carpetaImagenes)){
+//     mkdir($carpetaImagenes);
+// }
+// // generar nombre unico
+// $nombreImagen = md5(uniqid(rand(), true))  . ".jpg";
 
-//subir imagen
-move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
+// //subir imagen
+// move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
 
-//insertar bdd
-$query = "INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, idvendedor) VALUES ('$titulo', '$precio', '$nombreImagen', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$idvendedor')";
+//actualizar bdd
+$query = "UPDATE propiedades SET titulo = '${titulo}', precio = '${precio}', descripcion = '${descripcion}', habitaciones = ${habitaciones}, wc = ${wc}, estacionamiento = ${estacionamiento}, idvendedor = ${idvendedor} WHERE idpropiedad = ${id}";
 $resultado = mysqli_query($db, $query);
 
 if($resultado){
-    header('Location: /admin?resultado=1');
+    header('Location: /admin?resultado=2');
 }
 // if($resultado){
 //     echo "Insertado correctamente";
@@ -136,7 +133,7 @@ incluirTemplate('header');
         <?php echo $error; ?>
         </div>
     <?php endforeach;?>
-    <form class="formulario" method="POST" action="/admin/propiedades/crear.php" enctype="multipart/form-data">
+    <form class="formulario" method="POST" enctype="multipart/form-data">
         <fieldset>
             <legend>Información general</legend>
             <label for="titulo">Título</label>
@@ -172,7 +169,7 @@ incluirTemplate('header');
             </select>
         </fieldset>
 
-        <input type="submit" value="Subir" class="boton boton-verde">
+        <input type="submit" value="Actualizar" class="boton boton-verde">
     </form>
 </main>
 
