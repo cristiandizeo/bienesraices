@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // verificar pass
             $auth = password_verify($password, $usuario['password']);
-            
+
             if ($auth) {
                 session_start();
 
@@ -32,6 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['usuario'] = $usuario['email'];
                 $_SESSION['login'] = true;
 
+                header('Location: /admin');
+                
             } else {
                 $errores[] = "* El password es incorrecto";
             }

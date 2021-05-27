@@ -7,7 +7,7 @@ $auth = estaAutenticado();
 // echo "<pre>";
 
 if (!$auth) {
-header('Location: /');
+    header('Location: /');
 }
 
 
