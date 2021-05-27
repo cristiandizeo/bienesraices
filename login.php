@@ -18,14 +18,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($errores)) {
         $query = "SELECT * FROM usuarios WHERE email = '${email}'";
         $resultado = mysqli_query($db, $query);
-        
+
         if ($resultado->num_rows) {
             $usuario = mysqli_fetch_assoc($resultado);
 
             // verificar pass
             $auth = password_verify($password, $usuario['password']);
-            var_dump($auth);
-        }else{
+            if ($auth) {
+                session_start();
+
+                //arr de sesion
+                $_SESSION['usuario'] = $usuario['email'];
+                $_SESSION['login'] = true;
+
+            } else {
+                $errores[] = "* El password es incorrecto";
+            }
+        } else {
             $errores[] = "* El usuario no existe";
         }
     }
@@ -43,7 +52,6 @@ incluirTemplate('header'); ?>
     <?php endforeach; ?>
     <form method="POST" class="formulario">
         <fieldset>
-            <legend>Información persona</legend>
             <label for="email">Email</label>
             <input type="email" placeholder="Tu email" name="email" id="email" required>
 
