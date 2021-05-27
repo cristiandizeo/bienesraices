@@ -9,17 +9,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
     if (!$email) {
-        $errores[] = "El email es obligatorio";
+        $errores[] = "* El email es obligatorio";
     }
     if (!$password) {
-        $errores[] = "La contraseña es obligatoria";
+        $errores[] = "* La contraseña es obligatoria";
     }
 
     if (empty($errores)) {
         $query = "SELECT * FROM usuarios WHERE email = '${email}'";
         $resultado = mysqli_query($db, $query);
+        
         if ($resultado->num_rows) {
+            $usuario = mysqli_fetch_assoc($resultado);
 
+            // verificar pass
+            $auth = password_verify($password, $usuario['password']);
+            var_dump($auth);
         }else{
             $errores[] = "* El usuario no existe";
         }
