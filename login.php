@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // verificar pass
             $auth = password_verify($password, $usuario['password']);
+            
             if ($auth) {
                 session_start();
 

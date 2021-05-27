@@ -1,4 +1,16 @@
 <?php
+require '../../includes/funciones.php';
+$auth = estaAutenticado();
+
+// echo "<pre>";
+// var_dump($_SESSION);
+// echo "<pre>";
+
+if (!$auth) {
+header('Location: /');
+}
+
+
 //bdd
 require '../../includes/config/database.php';
 $db = conectarDB();
@@ -107,7 +119,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // }
     }
 }
-require '../../includes/funciones.php';
 incluirTemplate('header');
 
 ?>
