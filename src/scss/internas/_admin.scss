@@ -1,12 +1,16 @@
 .alerta {
-    padding: 0.5rem;
+    padding: .5rem;
+    text-align: center;
+    color: $blanco;
+    font-weight: $bold;
+    text-transform: uppercase;
+    margin: 1rem 0;
+
     &.error {
-        color: $rojo;
+        background-color: $rojo;
     }
 
     &.exito {
-        text-align: center;
-        color: $blanco;
         background-color: $verde;
     }
 }
@@ -18,15 +22,18 @@ table.propiedades {
 
     thead {
         background-color: $verde;
+
         th {
             color: $blanco;
             padding: 2rem;
         }
     }
+
     .imagen-tabla {
         width: 10rem;
     }
 }
-.img-small{
+
+.imagen-small {
     width: 20rem;
 }
