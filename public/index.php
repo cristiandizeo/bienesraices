@@ -11,6 +11,7 @@ use Controllers\LoginController;
 
 $router = new Router();
 
+//Privadas
 $router->get('/admin', [PropiedadController::class, 'index']);
 $router->get('/propiedades/crear', [PropiedadController::class, 'crear']);
 $router->post('/propiedades/crear', [PropiedadController::class, 'crear']);
@@ -25,6 +26,7 @@ $router->get('/vendedores/actualizar', [VendedorController::class, 'actualizar']
 $router->post('/vendedores/actualizar', [VendedorController::class, 'actualizar']);
 $router->post('/vendedores/eliminar', [VendedorController::class, 'eliminar']);
 
+// Publicas
 $router->get('/', [PaginasController::class, 'index']);
 $router->get('/nosotros', [PaginasController::class, 'nosotros']);
 $router->get('/propiedades', [PaginasController::class, 'propiedades']);

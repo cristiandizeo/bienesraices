@@ -67,8 +67,8 @@ class PaginasController {
             $mail->isSMTP();
             $mail->Host = 'smtp.mailtrap.io';
             $mail->SMTPAuth = true;
-            $mail->Username = 'd24e350850a869';
-            $mail->Password = '84f5068e077a6b';
+            $mail->Username = '5faeaa31a7ab36';
+            $mail->Password = 'b169c323834b2a';
             $mail->SMTPSecure = 'tls';
             $mail->Port = 2525;
         

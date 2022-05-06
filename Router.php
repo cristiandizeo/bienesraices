@@ -16,6 +16,13 @@ class Router
     }
 
     public function comprobarRutas() {
+
+        session_start();
+        $auth = $_SESSION['login'] ?? null;
+
+        // Array rutas protegidas
+        $rutas_protegidas = ['/admin','/propiedades/crear','/propiedades/actualizar','/propiedades/eliminar','/vendedores','/vendedores/crear','/vendedores/actualizar','/vendedores/eliminar'];
+
         $currentUrl = $_SERVER['REQUEST_URI'] ?? '/';
         $method = $_SERVER['REQUEST_METHOD'];
 
@@ -23,6 +30,11 @@ class Router
             $fn = $this->getRoutes[$currentUrl] ?? null;
         } else {
             $fn = $this->postRoutes[$currentUrl] ?? null;
+        }
+
+        // Proteger rutas - Busca si url actual es una ruta protegida y si esta auth
+        if(in_array($currentUrl, $rutas_protegidas) && !$auth){
+            header('Location: /');
         }
 
         if ( $fn ) {
