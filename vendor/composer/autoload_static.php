@@ -8,7 +8,6 @@ class ComposerStaticInit2b6e359fcac3f7cc93c367d59631eb55
 {
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -40,6 +39,7 @@ class ComposerStaticInit2b6e359fcac3f7cc93c367d59631eb55
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'PHPMailer\\PHPMailer\\' => 
         array (
